@@ -497,6 +497,40 @@ nav{
   </div>
 </div>
 
+<!-- ═══ MOCK TEST ═══ -->
+<div id="pg-mock-test" class="page">
+  <button class="back-btn" onclick="goto('pg-home')">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back
+  </button>
+  <div class="form-wrap">
+    <div class="form-title">Free <span>Mock Test</span></div>
+    <p class="form-sub">Register to start your MHT-CET 2026 Full Syllabus Mock Test.</p>
+    <div class="plan-tag tag-free">✅ Free Full Mock Test</div>
+    <div class="f-grid">
+      <div class="f-group"><label>Full Name *</label><input id="mn" type="text" placeholder="e.g. Rahul Sharma"></div>
+      <div class="f-group"><label>WhatsApp Number *</label><input id="mp" type="tel" placeholder="e.g. 9876543210" maxlength="10"></div>
+    </div>
+    <div class="f-grid">
+      <div class="f-group"><label>College / Coaching *</label><input id="mc" type="text" placeholder="Your current institute"></div>
+      <div class="f-group"><label>District *</label><select id="md"><option value="">Select district</option>
+          <option>Nagpur</option><option>Pune</option><option>Mumbai</option>
+          <option>Nashik</option><option>Chhatrapati Sambhajinagar</option>
+          <option>Amravati</option><option>Solapur</option><option>Kolhapur</option>
+          <option>Latur</option><option>Akola</option><option>Jalgaon</option>
+          <option>Nanded</option><option>Thane</option><option>Raigad</option>
+          <option>Yavatmal</option><option>Ahilyanagar</option><option>Other</option></select></div>
+    </div>
+    <button id="mt-submit-btn" class="submit-btn submit-free" style="background:#25d366" onclick="submitMockTest()">
+      Join Group & Start Test
+    </button>
+    <button id="mt-start-btn" class="action-btn buy-btn" style="display:none; margin-top:15px; width:100%; border-radius: 8px;" onclick="window.location.href='mhtcet_2025_full_mock.html'">
+      Start Mock Test Now →
+    </button>
+    <p class="form-note">You will be redirected to our WhatsApp group, close it and return here to start your test.</p>
+  </div>
+</div>
+
 <!-- ═══ PLANS ═══ -->
 <div id="pg-plans" class="page">
   <button class="back-btn" onclick="goto('pg-home')">
@@ -529,6 +563,30 @@ nav{
         <button class="opt-btn book-card-btn" onclick="goto('pg-form-book')">🚀 Book Now at ₹99/-</button>
         <div class="card-book-note">Remaining fees mandatory after MHT-CET result</div>
       </div>
+    </div>
+
+    <!-- Free Mock Test Section -->
+    <div class="mock-test-section" style="background: rgba(37, 211, 102, 0.05); border: 1px solid rgba(37, 211, 102, 0.2); border-radius: 16px; padding: 30px; text-align: center; margin-top: 40px;">
+      <div style="font-size: 2.5rem; margin-bottom: 10px;">🚀</div>
+      <h3 style="color: #25d366; font-size: 1.6rem; margin-bottom: 15px;">MHT-CET 2025 Free Mock Test</h3>
+      <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 25px; line-height: 1.6;">Test your preparation level with our full-length 150-question mock test. Experience the exact exam interface, complete syllabus coverage, and precise scoring system — absolutely free.</p>
+      
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 8px;">
+          <strong style="color: white; display: block; font-size: 1.2rem;">150</strong>
+          <span style="font-size: 0.85rem; color: #94a3b8;">Questions</span>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 8px;">
+          <strong style="color: white; display: block; font-size: 1.2rem;">180</strong>
+          <span style="font-size: 0.85rem; color: #94a3b8;">Minutes</span>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 8px;">
+          <strong style="color: white; display: block; font-size: 1.2rem;">Official</strong>
+          <span style="font-size: 0.85rem; color: #94a3b8;">Pattern</span>
+        </div>
+      </div>
+
+      <button class="action-btn wa-btn" style="margin-top: 25px; width: 100%; max-width: 350px; border-radius: 8px; font-size: 1.1rem; padding: 16px;" onclick="goto('pg-mock-test')">Register for Free Mock Test →</button>
     </div>
   </div>
 </div>
@@ -838,6 +896,23 @@ function submitPersonal(){
   m+=`💳 *Plan:* Personal Counselling — ₹499 (One-Time)%0A%0A`;
   m+=`Please share your *Send Mi / UPI QR code* for payment. I will pay ₹499 and send you the screenshot. 🙏`;
   window.open(`https://wa.me/917823063429?text=${m}`,'_blank');
+}
+function submitMockTest(){
+  const name=document.getElementById('mn').value.trim();
+  const phone=document.getElementById('mp').value.trim();
+  const college=document.getElementById('mc').value.trim();
+  const district=document.getElementById('md').value;
+  if(!name||!phone||!college||!district) {
+    alert('Please fill in all details.');
+    return;
+  }
+  
+  // Show the start test button and hide the submit button
+  document.getElementById('mt-start-btn').style.display = 'block';
+  document.getElementById('mt-submit-btn').style.display = 'none';
+  
+  // Redirect to WhatsApp
+  window.open('https://chat.whatsapp.com/Gr0OT1n0UeLIlxxAFCL4IW','_blank');
 }
 function submitBooking(){
   const name=document.getElementById('bn').value.trim();
